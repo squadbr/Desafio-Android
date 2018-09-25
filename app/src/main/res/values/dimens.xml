@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="four_dips">8dp</dimen>
+    <dimen name="eight_dips">8dp</dimen>
+    <dimen name="sixteen_dips">16dp</dimen>
+
+    <dimen name="title_height">50dp</dimen>
+    <dimen name="poster_height">250dp</dimen>
+</resources>

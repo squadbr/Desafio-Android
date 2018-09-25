@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="br.com.cemobile.moviescoreseeker.model.Status" />
+
+        <variable
+            name="resource"
+            type="br.com.cemobile.moviescoreseeker.model.Resource" />
+
+        <variable
+            name="viewModel"
+            type="br.com.cemobile.moviescoreseeker.search.SearchMoviesViewModel" />
+
+        <variable
+            name="query"
+            type="br.com.cemobile.moviescoreseeker.search.QueryViewModel" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/movieScoreQuestionText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/sixteen_dips"
+                android:gravity="start"
+                android:text="@string/movie_score_question"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <EditText
+                android:id="@+id/searchEdit"
+                style="@style/SearchEditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/sixteen_dips"
+                android:hint="@string/movie"
+                android:text="@={query.query}"
+                app:layout_constraintEnd_toEndOf="@+id/movieScoreQuestionText"
+                app:layout_constraintStart_toStartOf="@+id/movieScoreQuestionText"
+                app:layout_constraintTop_toBottomOf="@+id/movieScoreQuestionText" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/sixteen_dips"
+                android:layout_marginBottom="@dimen/eight_dips"
+                android:background="@color/grey_light"
+                app:layout_constraintTop_toBottomOf="@+id/searchEdit"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/moviesFoundText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/eight_dips"
+                android:text="@string/movies_found"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/divider"
+                app:layout_constraintStart_toStartOf="@+id/searchEdit"
+                app:layout_constraintEnd_toEndOf="@+id/searchEdit"
+                app:layout_constraintHorizontal_bias="0.0" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/moviesList"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="@dimen/eight_dips"
+                android:layout_marginBottom="@dimen/sixteen_dips"
+                app:layout_constraintTop_toBottomOf="@+id/moviesFoundText"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layoutManager="android.support.v7.widget.StaggeredGridLayoutManager"
+                app:spanCount="2"
+                tools:listitem="@layout/movies_list_item" />
+
+            <android.support.constraint.Group
+                android:id="@+id/moviesGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="moviesFoundText,moviesList"
+                app:visible="@{resource.status == Status.SUCCESS &amp;&amp; !resource.isEmpty}"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/noMoviesFoundText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/sixteen_dips"
+                android:text="@string/no_movies_found"
+                android:gravity="center"
+                app:visible="@{resource.status == Status.SUCCESS &amp;&amp; resource.isEmpty}"
+                app:layout_constraintTop_toBottomOf="@+id/searchEdit"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/errorText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/sixteen_dips"
+                android:gravity="center"
+                app:visible="@{resource.status == Status.ERROR}"
+                app:layout_constraintTop_toBottomOf="@+id/searchEdit"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:visibility="visible" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/Widget.AppCompat.ProgressBar"
+                app:layout_constraintTop_toBottomOf="@+id/searchEdit"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:visible="@{resource.status == Status.LOADING &amp;&amp; resource.isEmpty}" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

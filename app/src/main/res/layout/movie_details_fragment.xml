@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="br.com.cemobile.moviescoreseeker.model.Status" />
+
+        <variable
+            name="movie"
+            type="br.com.cemobile.moviescoreseeker.model.MovieDetails" />
+
+        <variable
+            name="resource"
+            type="br.com.cemobile.moviescoreseeker.model.Resource" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/posterImage"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/poster_height"
+                android:layout_margin="@dimen/eight_dips"
+                android:contentDescription="@string/poster_image"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/no_image"
+                app:imageUrl="@{movie.poster}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/sixteen_dips"
+                android:gravity="center"
+                android:text="@{movie.title}"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@+id/posterImage"
+                app:layout_constraintStart_toStartOf="@+id/posterImage"
+                app:layout_constraintEnd_toEndOf="@+id/posterImage"
+                tools:text="@sample/movie_details.json/Title" />
+
+            <View
+                android:id="@+id/titleDivider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/grey_light"
+                app:layout_constraintTop_toBottomOf="@+id/titleText"
+                app:layout_constraintStart_toStartOf="@+id/titleText"
+                app:layout_constraintEnd_toEndOf="@+id/titleText" />
+
+            <TextView
+                android:id="@+id/plotText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/sixteen_dips"
+                android:gravity="center"
+                android:text="@{movie.plot}"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@+id/titleDivider"
+                app:layout_constraintStart_toStartOf="@+id/titleDivider"
+                app:layout_constraintEnd_toEndOf="@+id/titleDivider"
+                tools:text="@sample/movie_details.json/Plot" />
+
+            <View
+                android:id="@+id/plotDivider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="@color/grey_light"
+                app:layout_constraintTop_toBottomOf="@+id/plotText"
+                app:layout_constraintStart_toStartOf="@+id/plotText"
+                app:layout_constraintEnd_toEndOf="@+id/plotText" />
+
+            <TextView
+                android:id="@+id/ratingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/sixteen_dips"
+                android:paddingLeft="@dimen/sixteen_dips"
+                android:paddingStart="@dimen/sixteen_dips"
+                android:paddingBottom="@dimen/sixteen_dips"
+                android:gravity="center"
+                android:text="@string/rating"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@+id/plotDivider"
+                app:layout_constraintStart_toStartOf="@+id/plotDivider"
+                app:layout_constraintEnd_toStartOf="@+id/ratingValueText"
+                app:layout_constraintHorizontal_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/ratingValueText"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:paddingLeft="@dimen/four_dips"
+                android:paddingStart="@dimen/four_dips"
+                android:paddingRight="@dimen/sixteen_dips"
+                android:paddingEnd="@dimen/sixteen_dips"
+                android:gravity="center"
+                android:text="@{movie.imdbRating}"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                app:layout_constraintTop_toTopOf="@+id/ratingText"
+                app:layout_constraintBottom_toBottomOf="@+id/ratingText"
+                app:layout_constraintStart_toEndOf="@+id/ratingText"
+                app:layout_constraintEnd_toEndOf="@+id/plotText"
+                tools:text="@sample/movie_details.json/imdbRating" />
+
+
+            <TextView
+                android:id="@+id/errorText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/sixteen_dips"
+                android:gravity="center"
+                app:visible="@{resource.status == Status.ERROR}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:visibility="visible" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/Widget.AppCompat.ProgressBar"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:visible="@{resource.status == Status.LOADING &amp;&amp; resource.isEmpty}" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
+</layout>

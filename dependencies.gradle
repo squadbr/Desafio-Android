@@ -1,0 +1,124 @@
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+ext {
+    //Android Project Targets
+    minSDK = 16
+    targetSDK = 28
+    compileSDK = 28
+    buildToolsVersion = '28.0.2'
+
+    // Kotlin Support
+    kotlinJVMTarget = "1.6"
+    kotlinVersion = '1.2.70'
+
+    //Libraries
+    supportLibraryVersion = '28.0.0-rc01'
+    constraintLayoutVersion = '1.1.2'
+    archComponentsVersion = '1.1.0'
+    archExtensionsVersion = '1.1.0'
+    roomVersion = '1.1.0'
+    pagingVersion = '1.0.0'
+    gsonVersion = '2.8.4'
+    okHttpVersion = '3.10.0'
+    retrofitVersion = '2.4.0'
+    ankoVersion = '0.10.5'
+    koinVersion = '0.9.3'
+    glideVersion = '4.7.1'
+    glideTransformationsVersion = '3.3.0'
+    multiDexVersion = '1.0.3'
+    coroutinesAdapterVersion = '1.0.0'
+    coroutinesVersion = '0.26.0'
+    lottieVersion = '2.6.1'
+    junitVersion = '4.12'
+    espressoToolsVersion = '1.0.2'
+    espressoCoreVersion = '3.0.2'
+    mockitoVersion = '2.7.21'
+
+    dataBinding = "com.android.databinding:compiler:$gradleVersion"
+    room = "android.arch.persistence.room:runtime:$roomVersion"
+    roomCompiler = "android.arch.persistence.room:compiler:$roomVersion"
+    paging = "android.arch.paging:runtime:$pagingVersion"
+    gson = "com.google.code.gson:gson:$gsonVersion"
+    anko = "org.jetbrains.anko:anko-commons:$ankoVersion"
+    koin = "org.koin:koin-android-architecture:$koinVersion"
+    glide = "com.github.bumptech.glide:glide:$glideVersion"
+    glideCompiler = "com.github.bumptech.glide:compiler:$glideVersion"
+    glideTransformations = "jp.wasabeef:glide-transformations:$glideTransformationsVersion"
+    multiDex = "com.android.support:multidex:$multiDexVersion"
+    lottie = "com.airbnb.android:lottie:$lottieVersion"
+
+    kotlin = [
+        kotlin:        "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion",
+        kotlinReflect: "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+    ]
+
+    kotlinRelated = kotlin.values()
+
+    archComponents = [
+        archRuntime:    "android.arch.lifecycle:runtime:$archComponentsVersion",
+        archExtensions: "android.arch.lifecycle:extensions:$archExtensionsVersion"
+    ]
+
+    archComponentsRelated = archComponents.values()
+
+    retrofit = [
+        retrofit:              "com.squareup.retrofit2:retrofit:$retrofitVersion",
+        retrofitGsonConverter: "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+        okHttpLogger:          "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
+        coroutinesAdapter:     "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-experimental-adapter:$coroutinesAdapterVersion"
+    ]
+
+    retrofitRelated = retrofit.values()
+
+    mobileUi = [
+        appCompat:          "com.android.support:appcompat-v7:$supportLibraryVersion",
+        constraintLayout:   "com.android.support.constraint:constraint-layout:$constraintLayoutVersion",
+        cardLayout:         "com.android.support:cardview-v7:$supportLibraryVersion",
+        supportV4Library:   "com.android.support:support-compat:$supportLibraryVersion",
+        design:             "com.android.support:design:$supportLibraryVersion",
+        supportLibrary:     "com.android.support:support-core-utils:$supportLibraryVersion"
+    ]
+
+    mobileUiRelated = mobileUi.values()
+
+    coroutines = [
+        coroutinesCore:     "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion",
+        coroutinesAndroid:  "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    ]
+
+    coroutinesRelated = coroutines.values()
+
+    unitTesting = [
+        junit:          "junit:junit:$junitVersion",
+        mockito:        "org.mockito:mockito-core:$mockitoVersion",
+        archTesting:    "android.arch.core:core-testing:$archComponentsVersion",
+        mockWebServer:  "com.squareup.okhttp3:mockwebserver:$okHttpVersion",
+        koin:           "org.koin:koin-test:$koinVersion",
+        espressoIdling: "com.android.support.test.espresso:espresso-idling-resource:$espressoCoreVersion"
+    ]
+
+    instrumentationTesting = [
+        espressoRunner: "com.android.support.test:runner:$espressoToolsVersion",
+        espressoRules:  "com.android.support.test:rules:$espressoToolsVersion",
+        espressoContrib:"com.android.support.test.espresso:espresso-contrib:$espressoCoreVersion",
+        espressoCore:   "com.android.support.test.espresso:espresso-core:$espressoCoreVersion",
+        mockitoAndroid: "org.mockito:mockito-android:$mockitoVersion"
+    ]
+
+    unitTestingRelated = unitTesting.values()
+
+    instrumentationTestingRelated = instrumentationTesting.values()
+
+    forceResolution = [
+        kotlin:         "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
+        kotlinReflect:  "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+    ]
+
+    toBeForced = forceResolution.values()
+
+}

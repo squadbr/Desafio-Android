@@ -1,0 +1,80 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion globalConfiguration["compileSDK"]
+    buildToolsVersion globalConfiguration["buildToolsVersion"]
+
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "br.com.cemobile.moviescoreseeker"
+        minSdkVersion globalConfiguration["minSDK"]
+        targetSdkVersion globalConfiguration["targetSDK"]
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", "\"http://www.omdbapi.com/?pikey=3c4692c2&type=movie\""
+        }
+    }
+    lintOptions {
+        abortOnError false
+        ignoreWarnings true
+        disable 'InvalidPackage'
+    }
+    kotlin {
+        experimental {
+            coroutines "enable"
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    androidExtensions {
+        experimental = true
+    }
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
+}
+
+dependencies {
+    def libs = rootProject.ext
+
+    implementation libs.anko
+    implementation libs.koin
+    implementation libs.lottie
+    implementation libs.room
+    kapt libs.roomCompiler
+
+    implementation libs.glideTransformations
+    implementation libs.glide
+    kapt libs.glideCompiler
+
+    libs.mobileUiRelated.each { implementation it }
+    libs.kotlinRelated.each { implementation it }
+    libs.retrofitRelated.each { implementation it }
+    libs.archComponentsRelated.each { implementation it }
+    libs.coroutinesRelated.each { implementation it }
+    kapt libs.dataBinding
+
+    libs.unitTestingRelated.each { testImplementation it }
+    libs.instrumentationTestingRelated.each { androidTestImplementation it }
+}
+
+configurations.all {
+    resolutionStrategy {
+        def libs = rootProject.ext
+        libs.toBeForced.each { force it}
+    }
+}

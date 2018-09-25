@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Movie Score Seeker</string>
+    <string name="brand_name" translatable="false">Squad</string>
+    <string name="preferences_file" translatable="false">squad_movies</string>
+    <string name="movie">Movie</string>
+    <string name="movies_found">Movies found</string>
+    <string name="no_movies_found">No movies found</string>
+    <string name="search_movie_by_title">Search by title</string>
+    <string name="search">Search</string>
+    <string name="poster_image">Movie image</string>
+    <string name="try_again">Try again</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="information_onboarding">Search for the movies you like and see its scores!</string>
+    <string name="lets_go">Let\'s Go!</string>
+    <string name="movie_score_question">What movies do you want to check the score?</string>
+    <string name="rating">Rating:</string>
+    <string name="rating_value" translatable="false">%s/10</string>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="movie">Filme</string>
+    <string name="movies_found">Filmes encontrados</string>
+    <string name="no_movies_found">Nenhum filme encontrado</string>
+    <string name="search_movie_by_title">Buscar um filme por título</string>
+    <string name="search">Buscar</string>
+    <string name="poster_image">Imagem do filme</string>
+    <string name="try_again">Tentar novamente</string>
+    <string name="unknown_error">Erro desconhecido</string>
+    <string name="lets_go">Vamos lá!</string>
+    <string name="information_onboarding">Busque pelos filmes que você gosta e veja as suas notas!</string>
+    <string name="movie_score_question">Quais filmes você quer ver a nota?</string>
+    <string name="rating">Nota:</string>
+</resources>
