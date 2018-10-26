@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.2.71")
+    implementation(kotlin("stdlib-jdk8", "1.2.71"))
     implementation("com.android.support:appcompat-v7:28.0.0")
     implementation("com.android.support.constraint:constraint-layout:1.1.3")
     testImplementation("junit:junit:4.12")
