@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.js.translate.context.Namer.kotlin
-
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
