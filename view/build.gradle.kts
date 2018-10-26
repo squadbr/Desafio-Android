@@ -9,7 +9,9 @@ plugins {
 }
 
 android {
+
     compileSdkVersion(28)
+
     defaultConfig {
         applicationId = "com.gabrielfeo.openmoviedbsearch"
         minSdkVersion(17)
@@ -18,11 +20,17 @@ android {
         versionName = "1.0"
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
+    }
+
+    compileOptions {
+        setSourceCompatibility(JavaVersion.VERSION_1_8)
+        setTargetCompatibility(JavaVersion.VERSION_1_8)
     }
 }
 

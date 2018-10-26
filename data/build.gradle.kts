@@ -6,7 +6,9 @@ plugins {
 }
 
 android {
+
     compileSdkVersion(28)
+
     defaultConfig {
         minSdkVersion(17)
         targetSdkVersion(28)
@@ -20,6 +22,11 @@ android {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
         }
+    }
+
+    compileOptions {
+        setSourceCompatibility(JavaVersion.VERSION_1_8)
+        setTargetCompatibility(JavaVersion.VERSION_1_8)
     }
 
 }
