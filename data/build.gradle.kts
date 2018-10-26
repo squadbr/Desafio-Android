@@ -6,6 +6,8 @@ plugins {
     id("kotlin-android")
 }
 
+configureDataModuleDependencies()
+
 android {
 
     compileSdkVersion(28)
