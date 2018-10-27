@@ -33,7 +33,7 @@ fun Project.configureViewModuleDependencies() = configure(
 )
 
 /**
- * Passes all provided [DependencyHandlerScope]`.() -> Unit` functions to the [dependencies]
+ * Passes all provided [DependencyConfigFunction] parameters to the [dependencies]
  * function. Aims for better readability at the call site.
  */
 internal fun Project.configure(vararg dependencyConfigBlocks: DependencyConfigFunction) =
