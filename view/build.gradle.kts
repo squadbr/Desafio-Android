@@ -8,6 +8,8 @@ plugins {
     id("kotlin-android-extensions")
 }
 
+configureViewModuleDependencies()
+
 android {
 
     compileSdkVersion(28)
@@ -32,13 +34,4 @@ android {
         setSourceCompatibility(JavaVersion.VERSION_1_8)
         setTargetCompatibility(JavaVersion.VERSION_1_8)
     }
-}
-
-dependencies {
-    implementation(kotlin("stdlib-jdk8", "1.2.71"))
-    implementation("com.android.support:appcompat-v7:28.0.0")
-    implementation("com.android.support.constraint:constraint-layout:1.1.3")
-    testImplementation("junit:junit:4.12")
-    androidTestImplementation("com.android.support.test:runner:1.0.2")
-    androidTestImplementation("com.android.support.test.espresso:espresso-core:3.0.2")
 }
