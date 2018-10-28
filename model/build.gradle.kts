@@ -12,9 +12,6 @@ java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
 }
-dependencies {
-    implementation(kotlin("stdlib-jdk8", "1.2.71"))
-}
 
 val compileKotlin: KotlinCompile by tasks
 compileKotlin.kotlinOptions {
