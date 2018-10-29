@@ -21,10 +21,10 @@ internal object RetrofitProvider {
         .build()
 
     private fun getNewOkHttpClient() = OkHttpClient.Builder()
-        .addInterceptor(apiKeyInterceptor)
+        .addInterceptor(ApiKeyInterceptor)
         .build()
 
-    object apiKeyInterceptor : Interceptor {
+    object ApiKeyInterceptor : Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             val oldRequest = chain.request()
             val originalUrl = oldRequest.url()

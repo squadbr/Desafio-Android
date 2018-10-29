@@ -9,7 +9,7 @@ class MovieRepository {
 
     fun search(query: String, onResultsReceived: (results: List<Movie>, page: Int?) -> Unit) {
         val responseHandler = SearchResponseHandler<MoviesSearchResponse, List<Movie>>()
-        responseHandler.onResultsReceived = onResultsReceived
+        responseHandler.onSuccessfulResponseResults = onResultsReceived
         OpenMovieDb.moviesService.searchMovies(query).enqueue(responseHandler)
     }
 

@@ -8,15 +8,15 @@ import retrofit2.Response
 class SearchResponseHandler<ApiResponseT, SearchResultsT> : ApiResponseHandler<ApiResponseT>()
         where ApiResponseT : SearchResponse<SearchResultsT> {
 
-    var onResultsReceived: ((results: SearchResultsT, page: Int?) -> Unit)? = null
+    var onSuccessfulResponseResults: ((results: SearchResultsT, page: Int?) -> Unit)? = null
 
     override fun onResponse(call: Call<ApiResponseT>, response: Response<ApiResponseT>) {
         super.onResponse(call, response)
+        val responseSuccessful = wasResponseSuccessful(response)
         if (responseSuccessful) {
             val apiResponse: ApiResponseT = response.body()!!
-            val page: Int? = getPageFrom(call.request())
-            apiResponse.page = page
-            with(apiResponse) { onResultsReceived?.invoke(results, page) }
+            apiResponse.page = getPageFrom(call.request())
+            with(apiResponse) { onSuccessfulResponseResults?.invoke(results, page) }
         }
     }
 
