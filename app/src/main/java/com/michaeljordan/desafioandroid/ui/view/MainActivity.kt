@@ -17,7 +17,7 @@ import com.michaeljordan.desafioandroid.ui.adapter.MovieAdapter
 import com.michaeljordan.desafioandroid.ui.viewmodel.MovieViewModel
 
 class MainActivity : AppCompatActivity(), MovieAdapter.MovieAdapterOnClickListener {
-    private var viewModel : MovieViewModel? = null
+    private var viewModel: MovieViewModel? = null
     private lateinit var binding: ActivityMainBinding
     private var movies: ArrayList<Movie?> = ArrayList()
     private lateinit var adapter: MovieAdapter
@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), MovieAdapter.MovieAdapterOnClickListen
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
 
-        val searchItem = menu.findItem(R.id.search)
+        val searchItem = menu.findItem(R.id.search_item)
 
         val searchView = searchItem.actionView as SearchView
         searchView.isFocusable = false

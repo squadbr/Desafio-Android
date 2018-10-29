@@ -5,8 +5,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.Filterable
 import com.michaeljordan.desafioandroid.R
 import com.michaeljordan.desafioandroid.databinding.MovieListItemBinding
 import com.michaeljordan.desafioandroid.model.Movie
@@ -39,7 +37,7 @@ class MovieAdapter(val context: Context, val listener: MovieAdapterOnClickListen
     }
 
     inner class MovieViewHolder(private val binding: MovieListItemBinding) : RecyclerView.ViewHolder(binding.root),
-        View.OnClickListener {
+            View.OnClickListener {
         init {
             binding.root.setOnClickListener(this)
         }
@@ -49,9 +47,9 @@ class MovieAdapter(val context: Context, val listener: MovieAdapterOnClickListen
             binding.tvRating.text = item?.imdbRating
 
             Picasso.with(context)
-                .load(item?.poster)
-                .error(R.drawable.ic_no_poster)
-                .into(binding.ivPoster)
+                    .load(item?.poster)
+                    .error(R.drawable.ic_no_poster)
+                    .into(binding.ivPoster)
         }
 
         override fun onClick(v: View?) {

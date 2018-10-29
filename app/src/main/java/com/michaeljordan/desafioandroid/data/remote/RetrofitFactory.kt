@@ -1,9 +1,9 @@
 package com.michaeljordan.desafioandroid.data.remote
 
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitFactory {
     companion object Factory {
@@ -14,10 +14,10 @@ class RetrofitFactory {
             val baseUrl = "http://www.omdbapi.com/"
 
             val retrofit = Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(baseUrl)
-                .client(client)
-                .build()
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .baseUrl(baseUrl)
+                    .client(client)
+                    .build()
 
             return retrofit.create(MovieApi::class.java)
         }
