@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="material_1x">8dp</dimen>
+    <dimen name="material_2x">16dp</dimen>
+    <dimen name="material_3x">24dp</dimen>
+    <dimen name="material_4x">32dp</dimen>
+
+    <dimen name="toolbar_text_size">20sp</dimen>
+</resources>
