@@ -8,8 +8,16 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 private const val BASE_URL = "http://www.omdbapi.com/"
+/**
+ * Expects an API key field to be present in [BuildConfig]. This constant is coupled to the module build
+ * script, since the script must take care of defining this field.
+ */
 private const val OMDB_API_KEY = BuildConfig.OMDB_API_KEY
 
+/**
+ * Exposes a Retrofit instance configured for use with the Open Movie Database API. The lazily-instantiated
+ * property is set up to use an API key on all calls.
+ */
 internal object RetrofitProvider {
 
     val retrofit: Retrofit by lazy { getNewRetrofitInstance() }
@@ -24,6 +32,13 @@ internal object RetrofitProvider {
         .addInterceptor(ApiKeyInterceptor)
         .build()
 
+    /**
+     * Intercepts the Request before it's sent by Retrofit and appends to its URL an API key query
+     * parameter. This applies to all calls, and rids the Retrofit interfaces from having to hardcode an
+     * API key to the URLs.
+     * @see OMDB_API_KEY
+     * @see [com.gabrielfeo.openmoviedbsearch.data.remote.OpenMovieDb.MoviesService]
+     */
     object ApiKeyInterceptor : Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             val oldRequest = chain.request()

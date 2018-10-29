@@ -6,6 +6,10 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+/**
+ * Abstraction of the [Open Movie Database](https://www.omdbapi.com), providing the related Retrofit services
+ * available for queries.
+ */
 internal class OpenMovieDb private constructor() {
 
     companion object {
