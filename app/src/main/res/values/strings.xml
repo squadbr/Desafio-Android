@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">DesafioAndroid</string>
+
+    <string name="poster_content_descriptor">poster</string>
+    <string name="plot">Plot</string>
+    <string name="search">search</string>
+    <string name="search_hint">search…</string>
+    <string name="msg_search">Type the movie name in the filter on the superior bar</string>
+</resources>
