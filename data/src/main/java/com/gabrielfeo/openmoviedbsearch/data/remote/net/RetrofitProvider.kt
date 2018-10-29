@@ -3,6 +3,7 @@ package com.gabrielfeo.openmoviedbsearch.data.remote.net
 import com.gabrielfeo.openmoviedbsearch.data.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.Request
 import okhttp3.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -28,9 +29,13 @@ internal object RetrofitProvider {
         .client(getNewOkHttpClient())
         .build()
 
-    private fun getNewOkHttpClient() = OkHttpClient.Builder()
-        .addInterceptor(ApiKeyInterceptor)
-        .build()
+    private fun getNewOkHttpClient(): OkHttpClient {
+        val clientBuilder = OkHttpClient.Builder().apply {
+            addInterceptor(ApiKeyInterceptor)
+            if (BuildConfig.DEBUG) addInterceptor(LoggingInterceptor)
+        }
+        return clientBuilder.build()
+    }
 
     /**
      * Intercepts the Request before it's sent by Retrofit and appends to its URL an API key query
@@ -39,7 +44,7 @@ internal object RetrofitProvider {
      * @see OMDB_API_KEY
      * @see [com.gabrielfeo.openmoviedbsearch.data.remote.OpenMovieDb.MoviesService]
      */
-    object ApiKeyInterceptor : Interceptor {
+    private object ApiKeyInterceptor : Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             val oldRequest = chain.request()
             val originalUrl = oldRequest.url()
@@ -49,6 +54,36 @@ internal object RetrofitProvider {
             val newRequest = oldRequest.newBuilder().url(newUrl).build()
             return chain.proceed(newRequest)
         }
+    }
+
+    private object LoggingInterceptor : Interceptor {
+
+        override fun intercept(chain: Interceptor.Chain): Response {
+            val request = chain.request()
+            print(request)
+            val response = chain.proceed(request)
+            print(response)
+            return response
+        }
+
+        private fun print(request: Request) = with(request) {
+            println("-----------------------------------")
+            println("REQUEST: ")
+            println("URL: ${url()}")
+            println("Header: ${headers()}")
+            println("Body: ${body()}")
+            println("-----------------------------------")
+        }
+
+        private fun print(response: Response) = with(response) {
+            println("-----------------------------------")
+            println("RESPONSE: ")
+            println("Header: ${headers()}")
+            println("Status code: ${code()} ${message()}")
+            println("Body: ${body()}")
+            println("-----------------------------------")
+        }
+
     }
 
 }
