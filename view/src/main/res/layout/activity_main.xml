@@ -11,11 +11,12 @@
 		android:layout_width = "match_parent"
 		android:layout_height = "wrap_content">
 
-		<androidx.appcompat.widget.Toolbar
+		<com.oshi.libsearchtoolbar.SearchAnimationToolbar
 			android:id = "@+id/main_t_toolbar"
 			android:layout_width = "match_parent"
 			android:layout_height = "wrap_content"
-			app:layout_scrollFlags = "scroll|snap|enterAlways" />
+			app:layout_scrollFlags = "scroll|snap|enterAlways"
+			app:searchHint = "@string/movieslist_toolbar_search_hint" />
 
 	</com.google.android.material.appbar.AppBarLayout>
 

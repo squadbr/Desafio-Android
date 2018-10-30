@@ -46,6 +46,8 @@ internal val viewModuleDependencies: DependencyConfigFunction = {
     "kapt"("androidx.lifecycle:lifecycle-compiler:${versions.lifecycleComponents}")
     //Image processing
     "implementation"("com.squareup.picasso:picasso:2.71828")
+    //Custom views
+    "implementation"("com.github.udioshi85:libSearchToolbar:1.3.0")
     // Instrumented Testing
     "androidTestImplementation"("androidx.test:runner:1.1.0")
     "androidTestImplementation"("androidx.test.espresso:espresso-core:3.1.0")

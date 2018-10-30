@@ -2,8 +2,8 @@ package com.gabrielfeo.openmoviedbsearch.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import com.gabrielfeo.openmoviedbsearch.R
+import com.oshi.libsearchtoolbar.SearchAnimationToolbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -13,13 +13,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         lifecycle.addObserver(navigator)
-        findActionBar()
+        findToolbar()
         navigator.onMainActivityCreated()
     }
 
-    private fun findActionBar() {
-        val toolbar: Toolbar = findViewById(R.id.main_t_toolbar)
-        setSupportActionBar(toolbar)
+    private fun findToolbar() {
+        val animatedToolbar = findViewById<SearchAnimationToolbar>(R.id.main_t_toolbar)
+        animatedToolbar.setSupportActionBar(this) /* Lint reports this as an issue, but the Jetifier tool
+        solves this at compile time. See gradle.properties */
     }
 
     override fun onBackPressed() {

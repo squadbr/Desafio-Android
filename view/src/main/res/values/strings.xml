@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">OpenMovieDbSearch</string>
+	<string name = "moviesearch_toolbar_search">Search</string>
+	<string name = "movieslist_toolbar_search_hint">Search Movies</string>
 </resources>
