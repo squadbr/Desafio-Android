@@ -25,7 +25,7 @@ class SearchResponseHandler<ApiResponseT, SearchResultsT> : ApiResponseHandler<A
      * @see onResponse
      * @see wasResponseSuccessful
      */
-    var onSuccessfulResponseResults: ((results: SearchResultsT, page: Int?) -> Unit)? = null
+    var onSuccessfulResponseResults: ((results: SearchResultsT?, page: Int?) -> Unit)? = null
 
     override fun onResponse(call: Call<ApiResponseT>, response: Response<ApiResponseT>) {
         super.onResponse(call, response)
