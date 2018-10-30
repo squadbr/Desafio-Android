@@ -1,23 +1,35 @@
 package com.gabrielfeo.openmoviedbsearch.view.fragment
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.gabrielfeo.openmoviedbsearch.R
 import com.gabrielfeo.openmoviedbsearch.view.adapter.MovieAdapter
+import com.gabrielfeo.openmoviedbsearch.view.viewmodel.MovieSearchViewModel
 
 class MovieSearchFragment : Fragment() {
 
+    private lateinit var viewModel: MovieSearchViewModel
     private lateinit var recyclerView: RecyclerView;
     private var adapter = MovieAdapter()
 
     companion object {
         fun newInstance() = MovieSearchFragment()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        getViewModel()
+    }
+
+    private fun getViewModel() {
+        viewModel = ViewModelProviders.of(this).get(MovieSearchViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -29,15 +41,12 @@ class MovieSearchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        findViewsOn(view)
+        findRecyclerViewOn(view)
         setupRecyclerView()
-        // Test for RecyclerView:
-        MovieRepository().search("godfather") { results, _ ->
-            adapter.movies = results
-        }
+        observeMoviesList()
     }
 
-    private fun findViewsOn(view: View) {
+    private fun findRecyclerViewOn(view: View) {
         recyclerView = view.findViewById(R.id.moviesearch_rv_results_list)
     }
 
@@ -47,5 +56,9 @@ class MovieSearchFragment : Fragment() {
         setHasFixedSize(true)
     }
 
+    private fun observeMoviesList() {
+        viewModel.moviesList.observe(this, Observer { list -> adapter.movies = list })
+        viewModel.searchMovies("scarface") // TODO Remove test for RecyclerView
+    }
 
 }
