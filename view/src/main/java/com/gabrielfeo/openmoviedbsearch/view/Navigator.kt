@@ -28,6 +28,11 @@ class Navigator(private var fragmentManager: FragmentManager?) : LifecycleObserv
         add(containerId, MovieSearchFragment.newInstance())
     }
 
+    fun onBackPressed(onBackStackEmpty: () -> Unit) = fragmentManager?.let {
+        if (it.backStackEntryCount > 0) it.popBackStack()
+        else onBackStackEmpty()
+    }
+
     /**
      * Extension function for better readability in transaction methods. Also, enforces that every
      * transaction is added to the back stack.
