@@ -1,6 +1,6 @@
 package com.gabrielfeo.openmoviedbsearch.view
 
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 
 /**
  * Since all the fragments used in the app have [MainActivity] in common as the container, this provides

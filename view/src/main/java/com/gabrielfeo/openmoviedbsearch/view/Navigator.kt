@@ -1,11 +1,11 @@
 package com.gabrielfeo.openmoviedbsearch.view
 
-import android.arch.lifecycle.Lifecycle
-import android.arch.lifecycle.LifecycleObserver
-import android.arch.lifecycle.OnLifecycleEvent
-import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
-import android.support.v4.app.FragmentTransaction.TRANSIT_FRAGMENT_OPEN
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.FragmentTransaction.TRANSIT_FRAGMENT_OPEN
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
 import com.gabrielfeo.openmoviedbsearch.R
 import com.gabrielfeo.openmoviedbsearch.view.fragment.MovieSearchFragment
 

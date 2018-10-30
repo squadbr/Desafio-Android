@@ -1,12 +1,12 @@
 package com.gabrielfeo.openmoviedbsearch.view.adapter
 
-import android.support.v7.widget.RecyclerView
-import android.support.v7.widget.RecyclerView.ViewHolder
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.gabrielfeo.openmoviedbsearch.R
 import com.gabrielfeo.openmoviedbsearch.model.Movie
 import com.squareup.picasso.Picasso

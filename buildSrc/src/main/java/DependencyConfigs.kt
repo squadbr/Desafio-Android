@@ -7,8 +7,8 @@ enum class Layers {
 }
 
 private object versions {
-    const val supportLib = "28.0.0"
-    const val lifecycleComponents = "1.1.1"
+    const val supportLib = "1.0.0"
+    const val lifecycleComponents = "2.0.0"
 }
 
 internal val sharedDependencies: DependencyConfigFunction = {
@@ -26,9 +26,6 @@ internal val modelModuleDependencies: DependencyConfigFunction = {
 internal val dataModuleDependencies: DependencyConfigFunction = {
     // Modules
     "implementation"(project(":model"))
-    // Architecture Components
-    "implementation"("android.arch.lifecycle:extensions:${versions.lifecycleComponents}")
-    "implementation"("android.arch.lifecycle:runtime:${versions.lifecycleComponents}")
     //Retrofit
     "implementation"("com.squareup.retrofit2:retrofit:2.4.0")
     "implementation"("com.squareup.retrofit2:converter-gson:2.0.1")
@@ -41,12 +38,15 @@ internal val viewModuleDependencies: DependencyConfigFunction = {
     "implementation"(project(":model"))
     "implementation"(project(":data"))
     // Support Library
-    "implementation"("com.android.support:appcompat-v7:${versions.supportLib}")
-    "implementation"("com.android.support.constraint:constraint-layout:1.1.3")
-    "implementation"("com.android.support:design:${versions.supportLib}")
+    "implementation"("androidx.appcompat:appcompat:${versions.supportLib}")
+    "implementation"("androidx.constraintlayout:constraintlayout:1.1.3")
+    "implementation"("com.google.android.material:material:${versions.supportLib}")
+    // Architecture Components
+    "implementation"("androidx.lifecycle:lifecycle-extensions:${versions.lifecycleComponents}")
+    "kapt"("androidx.lifecycle:lifecycle-compiler:${versions.lifecycleComponents}")
     //Image processing
     "implementation"("com.squareup.picasso:picasso:2.71828")
     // Instrumented Testing
-    "androidTestImplementation"("com.android.support.test:runner:1.0.2")
-    "androidTestImplementation"("com.android.support.test.espresso:espresso-core:3.0.2")
+    "androidTestImplementation"("androidx.test:runner:1.1.0")
+    "androidTestImplementation"("androidx.test.espresso:espresso-core:3.1.0")
 }
