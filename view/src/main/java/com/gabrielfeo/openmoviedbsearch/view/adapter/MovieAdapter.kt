@@ -39,9 +39,8 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
         ratingView.text = movie.rating
     }
 
-    private fun setPosterImageOn(viewHolder: MovieViewHolder, movie: Movie) {
+    private fun setPosterImageOn(viewHolder: MovieViewHolder, movie: Movie) =
         Picasso.get().load(movie.posterUrl).into(viewHolder.posterView)
-    }
 
     class MovieViewHolder(movieView: View) : ViewHolder(movieView) {
 

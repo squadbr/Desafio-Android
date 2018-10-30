@@ -41,7 +41,7 @@ class Navigator(private var fragmentManager: FragmentManager?) : LifecycleObserv
         transactionName: String,
         transactionFunction: FragmentTransaction.() -> Unit
     ) {
-        val transaction = this.beginTransaction()
+        this.beginTransaction()
             .addToBackStack(transactionName)
             .apply(transactionFunction)
             .commit()
