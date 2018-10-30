@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
 import android.support.v4.app.FragmentTransaction.TRANSIT_FRAGMENT_OPEN
 import com.gabrielfeo.openmoviedbsearch.R
+import com.gabrielfeo.openmoviedbsearch.view.fragment.MovieSearchFragment
 
 /**
  * Handles all app navigation through methods called from [MainActivity] and fragments. Methods are
@@ -24,7 +25,7 @@ class Navigator(private var fragmentManager: FragmentManager?) : LifecycleObserv
 
     fun onMainActivityCreated() = fragmentManager?.transaction("activityCreated") {
         setTransition(TRANSIT_FRAGMENT_OPEN)
-        TODO("Implement entry point fragment")
+        add(containerId, MovieSearchFragment.newInstance())
     }
 
     /**
