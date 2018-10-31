@@ -29,7 +29,7 @@ class Navigator(private var fragmentManager: FragmentManager?) : LifecycleObserv
 
     fun onMainActivityCreated() = fragmentManager?.transaction("activityCreated") {
         setTransition(TRANSIT_FRAGMENT_OPEN)
-        add(containerId, MovieSearchFragment.newInstance())
+        replace(containerId, MovieSearchFragment.newInstance())
     }
 
     fun onBackPressed(onBackStackEmpty: () -> Unit) = fragmentManager?.let {
