@@ -50,6 +50,7 @@ internal object RetrofitProvider {
             val originalUrl = oldRequest.url()
             val newUrl = originalUrl.newBuilder()
                 .addQueryParameter("apiKey", OMDB_API_KEY)
+                .addQueryParameter("type", "movie")
                 .build()
             val newRequest = oldRequest.newBuilder().url(newUrl).build()
             return chain.proceed(newRequest)

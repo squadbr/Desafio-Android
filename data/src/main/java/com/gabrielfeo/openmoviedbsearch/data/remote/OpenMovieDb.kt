@@ -1,6 +1,7 @@
 package com.gabrielfeo.openmoviedbsearch.data.remote
 
 import com.gabrielfeo.openmoviedbsearch.data.remote.net.RetrofitProvider.retrofit
+import com.gabrielfeo.openmoviedbsearch.model.Movie
 import com.gabrielfeo.openmoviedbsearch.model.response.MoviesSearchResponse
 import retrofit2.Call
 import retrofit2.http.GET
@@ -18,7 +19,7 @@ internal class OpenMovieDb private constructor() {
 
     interface MoviesService {
 
-        @GET("?type=movie")
+        @GET(".")
         fun searchMovies(
             @Query("s") query: String,
             @Query("page") page: Int = 1
