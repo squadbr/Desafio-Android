@@ -25,6 +25,11 @@ internal class OpenMovieDb private constructor() {
             @Query("page") page: Int = 1
         ): Call<MoviesSearchResponse>
 
+        @GET(".")
+        fun getMovieDetails(
+            @Query("i") movieId: String
+        ): Call<Movie>
+
     }
 
 }
