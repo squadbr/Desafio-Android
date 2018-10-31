@@ -2,7 +2,7 @@
 ## OpenMovieDbSearch
 
 ### Visão Geral
-O OpenMovieDbSearch é um app para buscar filmes na [API do The Open Movie Database](https://www.omdbapi.com/), de acordo com as notas de cada filme segundo a [Internet Movie Database (IMDb)](https://www.imdb.com/), retornadas pela própria API. Parte do processo seletivo da [Squad](https://squad.com.br/), segundo o requisito original disponível na commit ae76b3c.
+O OpenMovieDbSearch é um app para buscar filmes na [API do The Open Movie Database](https://www.omdbapi.com/), de acordo com as notas de cada filme segundo a [Internet Movie Database (IMDb)](https://www.imdb.com/), retornadas pela própria API. Parte do processo seletivo da [Squad](https://squad.com.br/), segundo o requisito original disponível na commit [ae76b3c](https://github.com/gabrielfeo/OpenMovieDbSearch/commit/ae76b3c1bf0c1e82f1d35d2034971e30709ae63f).
 
 ### Screenshots
 <p>
