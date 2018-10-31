@@ -4,6 +4,13 @@
 ### Visão Geral
 O OpenMovieDbSearch é um app para buscar filmes na [API do The Open Movie Database](https://www.omdbapi.com/), de acordo com as notas de cada filme segundo a [Internet Movie Database (IMDb)](https://www.imdb.com/), retornadas pela própria API. Parte do processo seletivo da [Squad](https://squad.com.br/), segundo o requisito original disponível na commit ae76b3c.
 
+### Screenshots
+<p>
+<img src="/screenshots/searchscreen_search_closed.png" height="320" width="180"/>
+<img src="/screenshots/searchscreen_search_open.png" height="320" width="180"/>
+<img src="/screenshots/detailscreen.png" height="320" width="180"/>
+</p>
+
 ### Especificações
  - **Idioma:** Como o Git SCM, a linguagem Kotlin e o Android framework como um todo são escritos em inglês, o código-fonte do projeto, bem como o controle de versões (*commit messages* e *branches*), será impreterivelmente escrito em inglês, visando coerência com as tecnologias que utiliza. Este README, excepcionalmente, é escrito em português, por ser este o idioma do requisito do desafio.
 
