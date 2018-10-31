@@ -14,14 +14,13 @@ private object versions {
 internal val sharedDependencies: DependencyConfigFunction = {
     // Language
     "implementation"("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.2.71")
+    // Serialization
+    "implementation"("com.google.code.gson:gson:2.8.5")
     // Testing
     "testImplementation"("junit:junit:4.12")
 }
 
-internal val modelModuleDependencies: DependencyConfigFunction = {
-    // Serialization
-    "implementation"("com.google.code.gson:gson:2.8.5")
-}
+internal val modelModuleDependencies: DependencyConfigFunction = { }
 
 internal val dataModuleDependencies: DependencyConfigFunction = {
     // Modules
