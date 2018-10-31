@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gabrielfeo.openmoviedbsearch.R
 import com.gabrielfeo.openmoviedbsearch.view.adapter.MovieAdapter
 import com.gabrielfeo.openmoviedbsearch.view.mainActivity
+import com.gabrielfeo.openmoviedbsearch.view.navigator
 import com.gabrielfeo.openmoviedbsearch.view.viewmodel.MovieSearchViewModel
 import com.oshi.libsearchtoolbar.SearchAnimationToolbar
 
@@ -21,7 +22,8 @@ class MovieSearchFragment : Fragment() {
     private lateinit var viewModel: MovieSearchViewModel
     private lateinit var toolbar: SearchAnimationToolbar
     private lateinit var recyclerView: RecyclerView;
-    private var adapter = MovieAdapter()
+    private var adapter = MovieAdapter(
+        onMovieClickListener = { _, movie -> navigator.onMovieResultClicked(movie) })
 
     companion object {
         fun newInstance() = MovieSearchFragment()

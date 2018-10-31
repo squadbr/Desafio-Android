@@ -11,7 +11,9 @@ import com.gabrielfeo.openmoviedbsearch.R
 import com.gabrielfeo.openmoviedbsearch.model.Movie
 import com.squareup.picasso.Picasso
 
-class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(
+    private val onMovieClickListener: (view: View, movie: Movie) -> Unit
+) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     var movies: List<Movie>? = null
         set(value) {
@@ -29,6 +31,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
     override fun onBindViewHolder(viewHolder: MovieViewHolder, position: Int) {
         val currentMovie = movies?.get(position) ?: return
         setMovieInfo(viewHolder, currentMovie)
+        setClickAction(viewHolder, currentMovie)
     }
 
     private fun setMovieInfo(viewHolder: MovieViewHolder, movie: Movie) = with(viewHolder) {
@@ -37,6 +40,10 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
         directorView.text = movie.director
         yearView.text = movie.year
         ratingView.text = movie.rating
+    }
+
+    private fun setClickAction(viewHolder: MovieViewHolder, movie: Movie) {
+        viewHolder.itemView.setOnClickListener { view -> onMovieClickListener(view, movie) }
     }
 
     private fun setPosterImageOn(viewHolder: MovieViewHolder, movie: Movie) =
